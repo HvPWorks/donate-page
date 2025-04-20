@@ -1,87 +1,104 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حمایت از پروژه‌ها</title>
-  <style>
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: #f9fafb;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-    }
-    h1 {
-      color: #111827;
-      font-size: 24px;
-      margin-bottom: 16px;
-    }
-    p {
-      color: #4b5563;
-      font-size: 16px;
-      margin-bottom: 24px;
-    }
-    .wallet {
-      background-color: #f3f4f6;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 24px;
-      font-size: 14px;
-      word-break: break-word;
-    }
-    .wallet-title {
-      font-weight: bold;
-      color: #374151;
-      margin-bottom: 8px;
-    }
-    .qr {
-      margin-top: 8px;
-    }
-    .qr img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 12px;
-      color: #9ca3af;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حمایت مالی از پروژه‌ها</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .wallet {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+        .wallet img {
+            width: 150px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+        }
+        .address {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            word-break: break-all;
+            transition: background 0.3s;
+            font-size: 14px;
+        }
+        .address:hover {
+            background: #e0e0e0;
+        }
+        .copy-alert {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #4caf50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            display: none;
+            animation: fadeOut 2s forwards;
+        }
+        @keyframes fadeOut {
+            0% {opacity: 1;}
+            80% {opacity: 1;}
+            100% {opacity: 0; display: none;}
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <h1>حمایت از پروژه‌ها ❤️</h1>
-    <p>در صورت تمایل می‌توانید با ارسال رمز ارز از پروژه‌ها حمایت کنید:</p>
 
-    <div class="wallet">
-      <div class="wallet-title">TRX (TRON) & USDT(TRC20):</div>
-      TUiY2stBYMvHczd26Jto6u58fnyiRGQ6AP
-      <div class="qr">
-        <img src="qrcode-TRX-USDT.png" alt="TRX & USDT QR Code">
-      </div>
-    </div>
+<h1>حمایت مالی از پروژه‌های من ❤️</h1>
+<p>با ارسال حمایت‌های مالی به آدرس‌های زیر می‌توانید از توسعه پروژه‌ها حمایت کنید.</p>
 
-    <div class="wallet">
-      <div class="wallet-title">TON (TONCOIN):</div>
-      UQAwYerkc1Uj1tesi9CbAl9sHFRkotqIu9OU7umXOzp0m6a4
-      <div class="qr">
-        <img src="qrcode-TON.png" alt="TON QR Code">
-      </div>
-    </div>
+<div class="wallet">
+    <div class="copy-alert">کپی شد ✅</div>
+    <img src="qrcode-TRX-USDT.png" alt="TRX (TRON) & USDT(TRC20) QR">
+    <div class="address" onclick="copyToClipboard(this)">TUiY2stBYMvHczd26Jto6u58fnyiRGQ6AP</div>
+    <strong>TRX (TRON) & USDT(TRC20)</strong>
+</div>
 
-  </div>
+<div class="wallet">
+    <div class="copy-alert">کپی شد ✅</div>
+    <img src="qrcode-TON.png" alt="TON QR">
+    <div class="address" onclick="copyToClipboard(this)">UQAwYerkc1Uj1tesi9CbAl9sHFRkotqIu9OU7umXOzp0m6a4</div>
+    <strong>TON</strong>
+</div>
+
+
+<script>
+function copyToClipboard(element) {
+    const text = element.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const alertBox = element.parentElement.querySelector('.copy-alert');
+        alertBox.style.display = 'block';
+        setTimeout(() => {
+            alertBox.style.display = 'none';
+        }, 2000);
+    });
+}
+</script>
+
 </body>
 </html>
