@@ -48,10 +48,10 @@
         .address:hover {
             background: #e0e0e0;
         }
-        .copy-alert {
+        .copy-alert, .copy-alert-en {
             position: absolute;
             top: 10px;
-            left: 10px;
+            left: 250px;
             background: #4caf50;
             color: white;
             padding: 5px 10px;
@@ -60,27 +60,39 @@
             display: none;
             animation: fadeOut 2s forwards;
         }
+		.copy-alert-en {
+		  left: 10px;
+		}
         @keyframes fadeOut {
             0% {opacity: 1;}
             80% {opacity: 1;}
             100% {opacity: 0; display: none;}
         }
+
+
     </style>
 </head>
 <body>
 
-<h1>حمایت مالی از پروژه‌های من ❤️</h1>
-<p>با ارسال حمایت‌های مالی به آدرس‌های زیر می‌توانید از توسعه پروژه‌ها حمایت کنید.</p>
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <h1>حمایت از پروژه‌ها ❤️<br>Support the Projects ❤️</h1>
+  <p>در صورت تمایل می‌توانید با ارسال رمز ارز از پروژه‌ها حمایت کنید.<br>If you wish, you can support the projects by sending cryptocurrency.</p>
+</div>
+
 
 <div class="wallet">
-    <div class="copy-alert">کپی شد ✅</div>
+<div class="copy-alert">✅کپی شد</div>
+<div class="copy-alert-en">Copied✅</div>
     <img src="qrcode-TRX-USDT.png" alt="TRX (TRON) & USDT(TRC20) QR">
     <div class="address" onclick="copyToClipboard(this)">TUiY2stBYMvHczd26Jto6u58fnyiRGQ6AP</div>
     <strong>TRX (TRON) & USDT(TRC20)</strong>
+	<div class="copy-alert">✅Copied</div>
 </div>
 
 <div class="wallet">
-    <div class="copy-alert">کپی شد ✅</div>
+<div class="copy-alert">✅کپی شد</div>
+<div class="copy-alert-en">Copied✅</div>
     <img src="qrcode-TON.png" alt="TON QR">
     <div class="address" onclick="copyToClipboard(this)">UQAwYerkc1Uj1tesi9CbAl9sHFRkotqIu9OU7umXOzp0m6a4</div>
     <strong>TON</strong>
@@ -89,12 +101,15 @@
 
 <script>
 function copyToClipboard(element) {
+	const alertBoxSecond = element.parentElement.querySelector('.copy-alert-en');
     const text = element.innerText;
     navigator.clipboard.writeText(text).then(() => {
         const alertBox = element.parentElement.querySelector('.copy-alert');
         alertBox.style.display = 'block';
+		alertBoxSecond.style.display = 'block';
         setTimeout(() => {
             alertBox.style.display = 'none';
+			alertBoxSecond.style.display = 'none';
         }, 2000);
     });
 }
